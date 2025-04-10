@@ -1,0 +1,180 @@
+{
+    "schema_version": "1.0.0",
+    "metadata": {
+      "name": "Task Tracking System",
+      "description": "Rules for tracking tasks and maintaining system context",
+      "author": "Distinguished Software Engineer",
+      "last_updated": "2025-04-10T10:00:00Z"
+    },
+    "system": {
+      "context_maintenance": {
+        "strategy": "incremental",
+        "max_context_size": 16384,
+        "retention_policy": "priority_based",
+        "archiving_threshold": 30
+      },
+      "task_tracking": {
+        "enabled": true,
+        "format": "structured",
+        "status_options": ["pending", "in_progress", "blocked", "completed", "abandoned"],
+        "priority_levels": ["critical", "high", "medium", "low"]
+      }
+    },
+    "behavior_rules": [
+      {
+        "id": "rule_001",
+        "description": "Always maintain a comprehensive record of task history",
+        "action": "update_task_history",
+        "parameters": {
+          "frequency": "on_change",
+          "detail_level": "high"
+        }
+      },
+      {
+        "id": "rule_002",
+        "description": "Capture context of all decisions and actions",
+        "action": "record_decision_context",
+        "parameters": {
+          "include_rationale": true,
+          "include_alternatives": true
+        }
+      },
+      {
+        "id": "rule_003",
+        "description": "Track dependencies between tasks",
+        "action": "update_dependency_graph",
+        "parameters": {
+          "visualization": "enabled",
+          "dependency_types": ["blocks", "is_blocked_by", "relates_to"]
+        }
+      },
+      {
+        "id": "rule_004",
+        "description": "Prioritize pending tasks based on urgency and impact",
+        "action": "prioritize_tasks",
+        "parameters": {
+          "algorithm": "weighted_score",
+          "factors": ["deadline", "impact", "effort", "dependencies"]
+        }
+      },
+      {
+        "id": "rule_005",
+        "description": "Summarize system state on request",
+        "action": "generate_summary",
+        "parameters": {
+          "formats": ["detailed", "executive", "timeline"],
+          "include_metrics": true
+        }
+      }
+    ],
+    "current_state": {
+      "active_tasks": [],
+      "completed_tasks": [],
+      "system_health": {
+        "status": "operational",
+        "last_check": "2025-04-10T10:00:00Z"
+      },
+      "context_size": 0
+    },
+    "task_template": {
+      "id": "{{generated_id}}",
+      "title": "",
+      "description": "",
+      "status": "pending",
+      "priority": "medium",
+      "created_at": "",
+      "updated_at": "",
+      "assigned_to": "",
+      "tags": [],
+      "dependencies": [],
+      "history": [],
+      "attachments": [],
+      "estimated_effort": "",
+      "actual_effort": "",
+      "notes": ""
+    },
+    "functions": {
+      "update_task": {
+        "description": "Updates a task with new information",
+        "parameters": {
+          "task_id": "string",
+          "field": "string",
+          "value": "any"
+        }
+      },
+      "create_task": {
+        "description": "Creates a new task in the system",
+        "parameters": {
+          "title": "string",
+          "description": "string",
+          "priority": "string",
+          "tags": "array"
+        }
+      },
+      "link_tasks": {
+        "description": "Creates a dependency link between tasks",
+        "parameters": {
+          "source_id": "string",
+          "target_id": "string",
+          "relationship": "string"
+        }
+      },
+      "generate_report": {
+        "description": "Generates a report of the current system state",
+        "parameters": {
+          "format": "string",
+          "include_completed": "boolean",
+          "time_range": "string"
+        }
+      }
+    },
+    "events": {
+      "on_task_created": {
+        "actions": ["update_context", "notify_relevant_stakeholders"]
+      },
+      "on_task_completed": {
+        "actions": ["update_context", "check_dependencies", "archive_if_needed"]
+      },
+      "on_task_blocked": {
+        "actions": ["update_context", "escalate_if_critical"]
+      },
+      "on_system_update": {
+        "actions": ["record_change", "update_timestamps"]
+      }
+    },
+    "extensions": {
+      "integrations": {
+        "git": {
+          "enabled": true,
+          "track_branches": true,
+          "link_commits_to_tasks": true
+        },
+        "ci_cd": {
+          "enabled": true,
+          "track_pipeline_results": true
+        },
+        "issue_tracker": {
+          "enabled": false,
+          "provider": null,
+          "sync_direction": "bidirectional"
+        }
+      },
+      "ai_assistance": {
+        "enabled": true,
+        "capabilities": [
+          "task_prioritization",
+          "dependency_analysis",
+          "effort_estimation",
+          "context_summarization"
+        ]
+      }
+    },
+    "version_history": [
+      {
+        "version": "1.0.0",
+        "date": "2025-04-10T10:00:00Z",
+        "author": "Distinguished Software Engineer",
+        "changes": "Initial version"
+      }
+    ]
+  }
